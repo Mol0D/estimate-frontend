@@ -1,10 +1,10 @@
 <template>
   <thead>
     <tr>
-      <th></th>
+      <th class="table-header--number"></th>
       <th>Name</th>
       <template v-for="(dep, d) in props.config.departments" :key="d">
-        <th>{{ dep.name }}</th>
+        <th class="table-header--dep">{{ dep.name }}</th>
       </template>
       <th>Cost price</th>
       <th>Margin: {{ props.config.margin }} %</th>
@@ -21,3 +21,15 @@ const props = defineProps({
   config: Object as PropType<IConfig>,
 });
 </script>
+
+<style lang="scss">
+.table-header {
+  &--number {
+    width: 48px;
+  }
+
+  &--dep {
+    width: 200px;
+  }
+}
+</style>

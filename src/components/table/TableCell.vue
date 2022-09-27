@@ -1,16 +1,17 @@
 <template>
-  <div>
-    <input
-      :value="props.value"
-      @input.prevent.stop="$emit('input', +$event.target.value)"
-    />
-  </div>
+  <input
+    class="table--input"
+    :value="props.value"
+    @input="$emit('input', +$event.target.value)"
+  />
 </template>
 
 <script setup lang="ts">
-import { defineProps } from "vue";
+import { defineEmits, defineProps } from "vue";
 
 const props = defineProps({
   value: { type: Number, required: true },
 });
+
+defineEmits(["input"]);
 </script>
