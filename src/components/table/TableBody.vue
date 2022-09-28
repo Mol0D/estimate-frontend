@@ -6,6 +6,7 @@
       :key="s"
       :section="section"
       :allow-delete="estimate.sections.length > 1"
+      :start-index="getIndex(s)"
       @add-section="estimate.addSection()"
       @add-row="estimate.addRow(section.id)"
       @duplicate-row="estimate.duplicateRow(section.id, $event)"
@@ -31,10 +32,22 @@ import TableSection from "@/components/table/TableSection.vue";
 import TableRow from "@/components/table/TableRow.vue";
 
 const props = defineProps({
-  estimate: Object as PropType<IEstimate>,
+  estimate: { type: Object as PropType<IEstimate>, required: true },
 });
 
 // const debugHelper = (...obj) => {
 //   console.log(...Object.values(obj), 'debug');
 // }
+
+const getIndex = (s: number) => {
+  let count = 1;
+
+  for (let i = 0; i < s; i++) {
+    if (i <= s) {
+      count += props.estimate.sections[i].tasks.length;
+    }
+  }
+
+  return count;
+};
 </script>

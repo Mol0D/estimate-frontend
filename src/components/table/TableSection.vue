@@ -20,6 +20,7 @@
     :key="t"
     :row="task"
     :allow-delete="section.tasks.length > 1"
+    :index="startIndex + t"
     @add-row="$emit('add-row')"
     @duplicate-row="$emit('duplicate-row', task.id)"
     @delete-row="$emit('delete-row', task.id)"
@@ -39,6 +40,7 @@ import { TableAction } from "@/components/table/models/tabla-actions";
 const props = defineProps({
   section: { type: Object as PropType<ISection>, required: true },
   allowDelete: { type: Boolean, required: true },
+  startIndex: { type: Number, default: 1 },
 });
 
 const sectionActions = computed((): Array<TableAction> => {

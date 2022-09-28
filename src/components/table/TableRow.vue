@@ -1,14 +1,16 @@
 <template>
   <tr class="estimate-table--row">
     <td class="estimate-table--column__number">
-      <span>1</span>
-      <table-side-menu
-        v-if="showMenu"
-        :list="rowActions"
-        @add-row="$emit('add-row')"
-        @duplicate-row="$emit('duplicate-row')"
-        @delete-row="$emit('delete-row')"
-      ></table-side-menu>
+      <template v-if="showMenu">
+        <span>{{ index }}</span>
+        <table-side-menu
+          v-if="showMenu"
+          :list="rowActions"
+          @add-row="$emit('add-row')"
+          @duplicate-row="$emit('duplicate-row')"
+          @delete-row="$emit('delete-row')"
+        ></table-side-menu>
+      </template>
     </td>
     <td>
       <input
@@ -40,6 +42,7 @@ const props = defineProps({
   row: { type: Object as PropType<IRow>, required: true },
   showMenu: { type: Boolean, default: false },
   allowDelete: { type: Boolean, default: false },
+  index: { type: Number, default: 0 },
 });
 
 const rowActions = computed((): Array<TableAction> => {
