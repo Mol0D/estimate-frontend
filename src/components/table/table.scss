@@ -1,0 +1,96 @@
+.estimate-table {
+  width: calc(100% - 100px);
+  border: 1px solid #ececee;
+  border-collapse: collapse;
+  margin: 0 auto;
+
+  th,
+  td {
+    border: 1px solid #ececee;
+    background-color: #ffffff;
+  }
+
+  &--column {
+    &__number {
+      width: 48px;
+      position: relative;
+
+      &__menu {
+        position: absolute;
+        z-index: 3;
+        width: 200px;
+        background: #ffffff;
+        border: 1px solid #96979b;
+        top: 0;
+        transform: translateY(calc(calc(100% / -2) + 24px));
+        border-radius: 2px;
+
+        span {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 48px;
+          border-bottom: 1px solid #96979b;
+          cursor: pointer;
+        }
+      }
+
+      &__button {
+        display: block;
+        width: 10px;
+        height: 10px;
+        background-color: #96979b;
+        position: absolute;
+        top: 50%;
+        border-radius: 1px;
+        transform: translate(-200%, -50%);
+        cursor: pointer;
+      }
+    }
+
+    &__department {
+      width: 200px;
+    }
+  }
+
+  &--input {
+    width: 100%;
+    height: 48px;
+    border: none;
+    font-size: 24px;
+    text-align: center;
+  }
+
+  &--row {
+    height: 48px;
+
+    &__discount {
+      td,
+      input {
+        background-color: #e0f7ef !important;
+      }
+    }
+
+    &__fees {
+      td,
+      input {
+        background-color: #e7f6fd !important;
+      }
+    }
+
+    &__taxes {
+      td,
+      input {
+        background-color: #feeeee !important;
+      }
+    }
+
+    &__total {
+      td,
+      input {
+        background-color: #2f3778 !important;
+        color: #fbfcfe !important;
+      }
+    }
+  }
+}

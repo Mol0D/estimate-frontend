@@ -1,6 +1,6 @@
 <template>
   <input
-    class="table--input"
+    class="estimate-table--input"
     :value="props.value"
     @input="$emit('input', +$event.target.value)"
   />

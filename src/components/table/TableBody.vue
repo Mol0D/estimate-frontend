@@ -5,15 +5,22 @@
       v-for="(section, s) in estimate.sections"
       :key="s"
       :section="section"
+      :allow-delete="estimate.sections.length > 1"
+      @add-section="estimate.addSection()"
+      @add-row="estimate.addRow(section.id)"
+      @duplicate-row="estimate.duplicateRow(section.id, $event)"
+      @delete-row="estimate.deleteRow(section.id, $event)"
+      @duplicate-section="estimate.duplicateSection(section.id)"
+      @delete-section="estimate.deleteSection(section.id)"
       @update-row-name="estimate.updateRowName(section.id, ...Object.values($event))"
       @update-section-name="estimate.updateSectionName(section.id, $event)"
       @update-dep="estimate.updateTaskValue(section.id, ...Object.values($event))"
     ></table-section>
     <table-row :row="estimate.subtotal"></table-row>
-    <table-row class="table--row__discount" :row="estimate.discount"></table-row>
-    <table-row class="table--row__fees" :row="estimate.fees"></table-row>
-    <table-row class="table--row__taxes" :row="estimate.taxes"></table-row>
-    <table-row class="table--row__total" :row="estimate.total"></table-row>
+    <table-row class="estimate-table--row__discount" :row="estimate.discount"></table-row>
+    <table-row class="estimate-table--row__fees" :row="estimate.fees"></table-row>
+    <table-row class="estimate-table--row__taxes" :row="estimate.taxes"></table-row>
+    <table-row class="estimate-table--row__total" :row="estimate.total"></table-row>
   </tbody>
 </template>
 

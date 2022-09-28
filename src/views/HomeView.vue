@@ -1,5 +1,7 @@
 <template>
-  <Table></Table>
+  <div style="padding-top: 200px">
+    <Table></Table>
+  </div>
 </template>
 
 <script setup lang="ts">
