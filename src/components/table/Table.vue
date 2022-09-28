@@ -19,6 +19,7 @@ const estimateTable = ref();
 onMounted(() => {
   estimateTable.value = Table({
     departments: mockDepartments,
+    margin: 10,
   });
 
   estimateTable.value.createTable();

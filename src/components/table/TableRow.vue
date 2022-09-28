@@ -24,7 +24,7 @@
       ></table-cell>
     </td>
     <td>{{ row.costPrice }}</td>
-    <td>margin here</td>
+    <td>{{ row.margin }}</td>
     <td>{{ row.price }}</td>
   </tr>
 </template>
