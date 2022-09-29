@@ -14,46 +14,74 @@
     background-color: #ffffff;
   }
 
+  &--menu {
+    &__list {
+      position: absolute;
+      z-index: 3;
+      width: 200px;
+      background: #ffffff;
+      border: 1px solid #96979b;
+      border-radius: 2px;
+
+      span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 48px;
+        border-bottom: 1px solid #96979b;
+        cursor: pointer;
+      }
+    }
+
+    &__button {
+      display: block;
+      width: 10px;
+      height: 10px;
+      background-color: #96979b;
+      position: absolute;
+      border-radius: 1px;
+      cursor: pointer;
+    }
+  }
+
   &--column {
     &__number {
       width: 48px;
       position: relative;
 
-      &__menu {
-        position: absolute;
-        z-index: 3;
-        width: 200px;
-        background: #ffffff;
-        border: 1px solid #96979b;
-        top: 0;
-        transform: translateY(calc(calc(100% / -2) + 24px));
-        border-radius: 2px;
-
-        span {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          height: 48px;
-          border-bottom: 1px solid #96979b;
-          cursor: pointer;
+      .estimate-table--menu {
+        &__list {
+          top: 0;
+          transform: translateY(calc(calc(100% / -2) + 24px));
         }
-      }
 
-      &__button {
-        display: block;
-        width: 10px;
-        height: 10px;
-        background-color: #96979b;
-        position: absolute;
-        top: 50%;
-        border-radius: 1px;
-        transform: translate(-200%, -50%);
-        cursor: pointer;
+        &__button {
+          top: 50%;
+          transform: translate(-200%, -50%);
+        }
       }
     }
 
     &__department {
       width: 200px;
+      position: relative;
+
+      .estimate-table--menu {
+        &__button {
+          top: 0;
+          left: 50%;
+          transform: translate(-50%, -200%);
+        }
+
+        &__list {
+          top: 0;
+          transform: translateY(-5px);
+        }
+      }
+    }
+
+    &-disable {
+      background-color: #96979b !important;
     }
   }
 
@@ -81,28 +109,28 @@
     &__discount {
       td,
       input {
-        background-color: #e0f7ef !important;
+        background-color: #e0f7ef;
       }
     }
 
     &__fees {
       td,
       input {
-        background-color: #e7f6fd !important;
+        background-color: #e7f6fd;
       }
     }
 
     &__taxes {
       td,
       input {
-        background-color: #feeeee !important;
+        background-color: #feeeee;
       }
     }
 
     &__total {
       td,
       input {
-        background-color: #2f3778 !important;
+        background-color: #2f3778;
         color: #fbfcfe !important;
       }
     }

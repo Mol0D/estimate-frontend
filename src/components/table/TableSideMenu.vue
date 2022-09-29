@@ -1,11 +1,8 @@
 <template>
-  <span
-    class="estimate-table--column__number__button"
-    @click="showMenu = true"
-  ></span>
+  <span class="estimate-table--menu__button" @click="showMenu = true"></span>
   <div
     v-if="showMenu"
-    class="estimate-table--column__number__menu"
+    class="estimate-table--menu__list"
     v-click-outside="closeMenu"
   >
     <span

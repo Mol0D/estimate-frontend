@@ -26,7 +26,10 @@
     </td>
     <td v-for="(dep, d) in row.departments" :key="d">
       <table-cell
-        :class="{ 'estimate-table--input-disable': row.isDisabled }"
+        :class="{
+          'estimate-table--input-disable': row.isDisabled,
+          'estimate-table--column-disable': dep.isDisabled,
+        }"
         :value="dep.value"
         @input="$emit('update-dep', { depId: dep.id, value: $event })"
       ></table-cell>
