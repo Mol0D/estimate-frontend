@@ -23,6 +23,7 @@
     :index="startIndex + t"
     @add-row="$emit('add-row')"
     @duplicate-row="$emit('duplicate-row', task.id)"
+    @toggle-row="$emit('toggle-row', task.id)"
     @delete-row="$emit('delete-row', task.id)"
     @update-row-name="$emit('update-row-name', { taskId: task.id, $event })"
     @update-dep="$emit('update-dep', { taskId: task.id, ...$event })"

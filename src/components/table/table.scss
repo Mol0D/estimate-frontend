@@ -63,10 +63,20 @@
     border: none;
     font-size: 24px;
     text-align: center;
+
+    &-disable {
+      background-color: #96979b !important;
+    }
   }
 
   &--row {
     height: 48px;
+
+    &-disable {
+      td {
+        background-color: #96979b !important;
+      }
+    }
 
     &__discount {
       td,

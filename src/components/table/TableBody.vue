@@ -10,6 +10,7 @@
       @add-section="estimate.addSection()"
       @add-row="estimate.addRow(section.id)"
       @duplicate-row="estimate.duplicateRow(section.id, $event)"
+      @toggle-row="estimate.toggleTaskInSection(section.id, $event)"
       @delete-row="estimate.deleteRow(section.id, $event)"
       @duplicate-section="estimate.duplicateSection(section.id)"
       @delete-section="estimate.deleteSection(section.id)"

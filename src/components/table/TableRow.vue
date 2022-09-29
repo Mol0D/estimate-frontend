@@ -1,5 +1,8 @@
 <template>
-  <tr class="estimate-table--row">
+  <tr
+    class="estimate-table--row"
+    :class="{ 'estimate-table--row-disable': row.isDisabled }"
+  >
     <td class="estimate-table--column__number">
       <template v-if="showMenu">
         <span>{{ index }}</span>
@@ -7,6 +10,7 @@
           v-if="showMenu"
           :list="rowActions"
           @add-row="$emit('add-row')"
+          @toggle-row="$emit('toggle-row')"
           @duplicate-row="$emit('duplicate-row')"
           @delete-row="$emit('delete-row')"
         ></table-side-menu>
@@ -15,12 +19,14 @@
     <td>
       <input
         class="estimate-table--input"
+        :class="{ 'estimate-table--input-disable': row.isDisabled }"
         :value="row.name"
         @input="$emit('update-row-name', $event.target.value)"
       />
     </td>
     <td v-for="(dep, d) in row.departments" :key="d">
       <table-cell
+        :class="{ 'estimate-table--input-disable': row.isDisabled }"
         :value="dep.value"
         @input="$emit('update-dep', { depId: dep.id, value: $event })"
       ></table-cell>
@@ -54,6 +60,10 @@ const rowActions = computed((): Array<TableAction> => {
     {
       text: "Duplicate",
       action: "duplicate-row",
+    },
+    {
+      text: props.row.isDisabled ? "Enable" : "Disable",
+      action: "toggle-row",
     },
   ];
 
