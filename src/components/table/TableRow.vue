@@ -21,6 +21,7 @@
         class="estimate-table--input"
         :class="{ 'estimate-table--input-disable': row.isDisabled }"
         :value="row.name"
+        :disabled="!showMenu"
         @input="$emit('update-row-name', $event.target.value)"
       />
     </td>

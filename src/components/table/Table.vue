@@ -7,8 +7,8 @@
 </template>
 
 <script setup lang="ts">
-// import Table from "estimate-library";
-import Table from "../../../../estimate-table-lib/build/index.js";
+import Table from "estimate-library";
+// import Table from "../../../../estimate-table-lib/build/index.js";
 import { onMounted, ref } from "vue";
 import mockDepartments from "@/helpers/mock-departments";
 import TableHeader from "@/components/table/TableHeader.vue";
@@ -20,6 +20,9 @@ onMounted(() => {
   estimateTable.value = Table({
     departments: mockDepartments,
     margin: 10,
+    discount: 10,
+    fees: 5,
+    taxes: 7,
   });
 
   estimateTable.value.createTable();
