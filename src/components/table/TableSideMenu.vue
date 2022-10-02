@@ -17,7 +17,7 @@
 
 <script setup lang="ts">
 import { defineEmits, defineProps, PropType, ref } from "vue";
-import { TableAction } from "@/components/table/models/tabla-actions";
+import { TableAction } from "@/components/table/models/table-action";
 
 defineProps({
   list: { type: Array as PropType<Array<TableAction>>, required: true },
