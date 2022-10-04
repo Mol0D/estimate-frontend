@@ -17,7 +17,7 @@
       group="tasks"
       item-key="id"
       :list="section.tasks"
-      @change="changeLog"
+      @change="$emit('update-tasks-order')"
     >
       <template #item="{ element, index }">
         <table-row
@@ -86,17 +86,6 @@ const sectionActions = computed((): Array<TableAction> => {
   }
 
   return actions;
-});
-
-const changeLog = (e) => {
-  console.log(e);
-};
-
-const tasksModel = computed({
-  get: () => props.section.tasks,
-  set: (value) => {
-    console.log(value, "value");
-  },
 });
 
 defineEmits(["update-row-name", "update-dep", "duplicate-section"]);

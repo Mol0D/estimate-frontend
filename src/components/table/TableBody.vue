@@ -18,6 +18,7 @@
           @update-row-name="estimate.updateRowName(element.id, ...Object.values($event))"
           @update-section-name="estimate.updateSectionName(element.id, $event)"
           @update-dep="estimate.updateTaskValue(element.id, ...Object.values($event))"
+          @update-tasks-order="estimate.updateTasksOrder(estimate.sections)"
         ></table-section>
       </template>
     </draggable>
@@ -36,6 +37,7 @@ import TableSection from "@/components/table/TableSection.vue";
 import TableRow from "@/components/table/TableRow.vue";
 import TableColumn from "@/components/table/models/table-column";
 import draggable from "vuedraggable";
+import ISection from "estimate-library/build/types/ISection";
 
 defineComponent(["draggable"]);
 
@@ -62,8 +64,8 @@ const getIndex = (s: number) => {
 
 const sectionModel = computed({
   get: () => props.estimate.sections,
-  set: (value) => {
-    console.log("value", value);
+  set: (value: Array<ISection>) => {
+    props.estimate.updateSectionsOrder(value);
   },
 });
 </script>
