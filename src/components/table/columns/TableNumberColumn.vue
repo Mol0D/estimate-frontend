@@ -1,17 +1,18 @@
 <template>
-  <td class="estimate-table--column__number">
-    <template v-if="showMenu">
-      <span>{{ index }}</span>
-      <table-side-menu
-        v-if="showMenu"
-        :list="rowActions"
-        @add-row="$emit('add-row')"
-        @toggle-row="$emit('toggle-row')"
-        @duplicate-row="$emit('duplicate-row')"
-        @delete-row="$emit('delete-row')"
-      ></table-side-menu>
-    </template>
-  </td>
+  <div
+    v-if="showMenu"
+    class="estimate-table--column estimate-table--column__number"
+  >
+    <div>{{ index }}</div>
+    <table-side-menu
+      v-if="showMenu"
+      :list="rowActions"
+      @add-row="$emit('add-row')"
+      @toggle-row="$emit('toggle-row')"
+      @duplicate-row="$emit('duplicate-row')"
+      @delete-row="$emit('delete-row')"
+    ></table-side-menu>
+  </div>
 </template>
 
 <script setup lang="ts">

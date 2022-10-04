@@ -1,6 +1,5 @@
 <template>
-  <tbody>
-    <!-- eslint-disable -->
+  <!-- eslint-disable -->
     <table-section
       v-for="(section, s) in estimate.sections"
       :key="s"
@@ -19,12 +18,11 @@
       @update-section-name="estimate.updateSectionName(section.id, $event)"
       @update-dep="estimate.updateTaskValue(section.id, ...Object.values($event))"
     ></table-section>
-    <table-row :row="estimate.subtotal"></table-row>
+    <table-row :row="estimate.subtotal" :columns="columns"></table-row>
     <table-row class="estimate-table--row__discount" :row="estimate.discount" :columns="columns"></table-row>
     <table-row class="estimate-table--row__fees" :row="estimate.fees" :columns="columns"></table-row>
     <table-row class="estimate-table--row__taxes" :row="estimate.taxes" :columns="columns"></table-row>
     <table-row class="estimate-table--row__total" :row="estimate.total" :columns="columns"></table-row>
-  </tbody>
 </template>
 
 <script setup lang="ts">

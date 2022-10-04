@@ -1,17 +1,28 @@
+$primary-border: 1px solid #ececee;
+$secondary-border: 1px solid #96979b;
+$primary-bg: #ffffff;
+$row-height: 48px;
+
 .estimate-table {
-  width: calc(100% - 100px);
-  border: 1px solid #ececee;
-  border-collapse: collapse;
+  display: grid;
+  width: fit-content;
+  border: $primary-border;
   margin: 0 auto;
 
-  th {
-    font-size: 14px;
-  }
+  &--header {
+    &__column {
+      background: $primary-bg;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      border-right: $primary-border;
+      border-bottom: $primary-border;
 
-  th,
-  td {
-    border: 1px solid #ececee;
-    background-color: #ffffff;
+      &:last-child {
+        border-right: none;
+      }
+    }
   }
 
   &--menu {
@@ -19,17 +30,21 @@
       position: absolute;
       z-index: 3;
       width: 200px;
-      background: #ffffff;
-      border: 1px solid #96979b;
+      background: $primary-bg;
+      border: $secondary-border;
       border-radius: 2px;
 
       span {
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 48px;
-        border-bottom: 1px solid #96979b;
+        height: $row-height;
+        border-bottom: $secondary-border;
         cursor: pointer;
+
+        &:last-child {
+          border-bottom: none;
+        }
       }
     }
 
@@ -45,10 +60,16 @@
   }
 
   &--column {
+    border-right: $primary-border;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     &__number {
-      width: 48px;
-      height: 48px;
+      width: $row-height;
+      height: $row-height;
       position: relative;
+      display: inline-grid;
 
       .estimate-table--menu {
         &__list {
@@ -64,9 +85,6 @@
     }
 
     &__department {
-      width: 200px;
-      position: relative;
-
       .estimate-table--menu {
         &__button {
           top: 0;
@@ -84,11 +102,15 @@
     &-disable {
       background-color: #96979b !important;
     }
+
+    &:last-child {
+      border-right: none;
+    }
   }
 
   &--input {
     width: 100%;
-    height: 48px;
+    height: 46px;
     border: none;
     font-size: 24px;
     text-align: center;
@@ -99,37 +121,65 @@
   }
 
   &--row {
-    height: 48px;
+    display: grid;
+    height: $row-height;
+    background: $primary-bg;
+    border-bottom: $primary-border;
 
-    &-disable {
-      td {
-        background-color: #96979b !important;
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &__section-name {
+      position: relative;
+      grid-template-columns: 1fr;
+      border-bottom: $primary-border !important;
+
+      .estimate-table--menu {
+        &__list {
+          top: 0;
+          transform: translateY(calc(calc(100% / -2) + 24px));
+        }
+
+        &__button {
+          top: 50%;
+          transform: translate(-200%, -50%);
+        }
       }
     }
 
+    &-disable {
+      background-color: #96979b !important;
+    }
+
     &__discount {
-      td,
+      background-color: #e0f7ef;
+
       input {
         background-color: #e0f7ef;
       }
     }
 
     &__fees {
-      td,
+      background-color: #e7f6fd;
+
       input {
         background-color: #e7f6fd;
       }
     }
 
     &__taxes {
-      td,
+      background-color: #feeeee;
+
       input {
         background-color: #feeeee;
       }
     }
 
     &__total {
-      td,
+      background-color: #2f3778;
+      color: #fbfcfe !important;
+
       input {
         background-color: #2f3778;
         color: #fbfcfe !important;

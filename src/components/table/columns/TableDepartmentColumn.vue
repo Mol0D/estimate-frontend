@@ -1,14 +1,12 @@
 <template>
-  <td>
-    <table-cell
-      :class="{
-        'estimate-table--input-disable': row.isDisabled,
-        'estimate-table--column-disable': department.isDisabled,
-      }"
-      :value="department.value"
-      @input="$emit('update-dep', $event)"
-    ></table-cell>
-  </td>
+  <table-cell
+    :class="{
+      'estimate-table--input-disable': row.isDisabled,
+      'estimate-table--column-disable': department.isDisabled,
+    }"
+    :value="department.value"
+    @input="$emit('update-dep', $event)"
+  ></table-cell>
 </template>
 
 <script setup lang="ts">

@@ -6,6 +6,7 @@ export default interface TableColumn {
   resizable: boolean;
   draggable: boolean;
   customizedType?: TableCustomizedColumnsEnum;
+  width: number;
   department?: {
     id: number;
     isDisabled: boolean;

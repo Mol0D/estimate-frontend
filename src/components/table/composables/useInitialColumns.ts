@@ -11,6 +11,7 @@ const useInitialColumns = (
       resizable: false,
       draggable: false,
       customizedType: TableCustomizedColumnsEnum.NUMBER,
+      width: 48,
     },
     {
       title: "Name",
@@ -18,24 +19,28 @@ const useInitialColumns = (
       resizable: true,
       draggable: false,
       customizedType: TableCustomizedColumnsEnum.NAME,
+      width: 200,
     },
     {
       title: "Margin",
       value: "margin",
       resizable: true,
       draggable: true,
+      width: 150,
     },
     {
       title: "Cost price",
       value: "costPrice",
       resizable: true,
       draggable: true,
+      width: 150,
     },
     {
       title: "Price",
       value: "price",
       resizable: true,
       draggable: true,
+      width: 150,
     },
   ];
 
@@ -47,6 +52,7 @@ const useInitialColumns = (
       resizable: true,
       draggable: true,
       customizedType: TableCustomizedColumnsEnum.DEPARTMENT,
+      width: 150,
       department: {
         id: dep.id,
         isDisabled: dep.isDisabled,

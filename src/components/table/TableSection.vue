@@ -1,19 +1,17 @@
 <template>
-  <tr class="estimate-table--row">
-    <td colspan="999" class="estimate-table--column__number">
-      <input
-        class="estimate-table--input"
-        :value="section.name"
-        @input="$emit('update-section-name', $event.target.value)"
-      />
-      <table-side-menu
-        :list="sectionActions"
-        @add-section="$emit('add-section')"
-        @duplicate-section="$emit('duplicate-section')"
-        @delete-section="$emit('delete-section')"
-      ></table-side-menu>
-    </td>
-  </tr>
+  <div class="estimate-table--row estimate-table--row__section-name">
+    <input
+      class="estimate-table--input"
+      :value="section.name"
+      @input="$emit('update-section-name', $event.target.value)"
+    />
+    <table-side-menu
+      :list="sectionActions"
+      @add-section="$emit('add-section')"
+      @duplicate-section="$emit('duplicate-section')"
+      @delete-section="$emit('delete-section')"
+    ></table-side-menu>
+  </div>
   <table-row
     v-for="(task, t) in section.tasks"
     show-menu

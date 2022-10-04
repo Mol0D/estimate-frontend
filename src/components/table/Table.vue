@@ -1,6 +1,6 @@
 <!-- eslint-disable -->
 <template>
-  <table v-if="estimateTable && tableColumns.length" class="estimate-table">
+  <div v-if="estimateTable && tableColumns.length" class="estimate-table">
     <table-header
       :config="estimateTable.config"
       :columns="tableColumns"
@@ -8,13 +8,13 @@
       @update-column="tableColumns = $event"
     ></table-header>
     <table-body :estimate="estimateTable" :columns="tableColumns"></table-body>
-  </table>
+  </div>
 </template>
 
 <script setup lang="ts">
 import Table from "estimate-library";
 // import Table from "../../../../estimate-table-lib/build/index.js";
-import { onMounted, ref } from "vue";
+import { computed, onMounted, ref } from "vue";
 import mockDepartments from "@/helpers/mock-departments";
 import TableHeader from "@/components/table/TableHeader.vue";
 import TableBody from "@/components/table/TableBody.vue";
@@ -22,7 +22,7 @@ import useInitialColumns from "@/components/table/composables/useInitialColumns"
 import TableColumn from "@/components/table/models/table-column";
 
 const estimateTable = ref();
-const tableColumns = ref<Array<TableColumn>>();
+const tableColumns = ref<Array<TableColumn>>([]);
 
 onMounted(() => {
   estimateTable.value = Table({
