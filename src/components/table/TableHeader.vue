@@ -1,66 +1,42 @@
 <template>
-  <thead class="estimate-table--row">
-    <draggable v-model="columnModel" tag="tr" :item-key="(key) => key">
-      <template #item="{ element: header }">
+  <thead>
+    <tr class="estimate-table--row">
+      <th class="estimate-table--column__number"></th>
+      <th>Name</th>
+      <template v-for="(dep, d) in props.config.departments" :key="d">
         <th
-          scope="col"
-          :class="{
-            'estimate-table--column-disable':
-              header.department?.id && header.isDisabled,
-            'estimate-table--column__department': header.department?.id,
-            'estimate-table--column__number': !header.value,
-          }"
+          class="estimate-table--column__department"
+          :class="{ 'estimate-table--column-disable': dep.isDisabled }"
         >
-          <span>{{ header.title }}</span>
+          <span>{{ dep.name }}</span>
           <table-side-menu
-            v-if="header.department?.id"
-            :list="getDepartmentMenu(header.isDisabled)"
-            @toggle-department="
-              $emit('toggle-department', header.department?.id)
-            "
+            :list="getDepartmentMenu(dep)"
+            @toggle-department="$emit('toggle-department', dep.id)"
           ></table-side-menu>
         </th>
       </template>
-    </draggable>
+      <th>Cost price</th>
+      <th>Margin: {{ props.config.margin }} %</th>
+      <th>Price</th>
+    </tr>
   </thead>
 </template>
 
 <script setup lang="ts">
-import {
-  computed,
-  defineComponent,
-  defineEmits,
-  defineProps,
-  PropType,
-} from "vue";
+import { defineProps, PropType } from "vue";
 import { IConfig } from "estimate-library/build/types/IConfig";
-import { TableAction } from "@/components/table/models/table-action";
+import { TableAction } from "@/components/table/models/tabla-actions";
+import IDepartment from "estimate-library/build/types/IDepartment";
 import TableSideMenu from "@/components/table/TableSideMenu.vue";
-import draggable from "vuedraggable";
-import TableColumn from "@/components/table/models/table-column";
-
-defineComponent(["draggable"]);
-
-const emit = defineEmits(["update-column"]);
 
 const props = defineProps({
   config: Object as PropType<IConfig>,
-  columns: Object as PropType<Array<TableColumn>>,
 });
 
-const getDepartmentMenu = (isDisabled: boolean): Array<TableAction> => [
+const getDepartmentMenu = (department: IDepartment): Array<TableAction> => [
   {
-    text: isDisabled ? "Enable" : "Disable",
+    text: department.isDisabled ? "Enable" : "Disable",
     action: "toggle-department",
   },
 ];
-
-const columnModel = computed({
-  get() {
-    return props.columns;
-  },
-  set(value) {
-    emit("update-column", value);
-  },
-});
 </script>
