@@ -1,23 +1,27 @@
 <template>
   <!-- eslint-disable -->
-    <table-section
-      v-for="(section, s) in estimate.sections"
-      :key="s"
-      :section="section"
-      :allow-delete="estimate.sections.length > 1"
-      :start-index="getIndex(s)"
-      :columns="columns"
-      @add-section="estimate.addSection()"
-      @add-row="estimate.addRow(section.id)"
-      @duplicate-row="estimate.duplicateRow(section.id, $event)"
-      @toggle-row="estimate.toggleTaskInSection(section.id, $event)"
-      @delete-row="estimate.deleteRow(section.id, $event)"
-      @duplicate-section="estimate.duplicateSection(section.id)"
-      @delete-section="estimate.deleteSection(section.id)"
-      @update-row-name="estimate.updateRowName(section.id, ...Object.values($event))"
-      @update-section-name="estimate.updateSectionName(section.id, $event)"
-      @update-dep="estimate.updateTaskValue(section.id, ...Object.values($event))"
-    ></table-section>
+  <div>
+    <draggable v-model="sectionModel" item-key="id">
+      <template #item="{ element, index}">
+        <table-section
+          :section="element"
+          :allow-delete="estimate.sections.length > 1"
+          :start-index="getIndex(index)"
+          :columns="columns"
+          @add-section="estimate.addSection()"
+          @add-row="estimate.addRow(element.id)"
+          @duplicate-row="estimate.duplicateRow(element.id, $event)"
+          @toggle-row="estimate.toggleTaskInSection(element.id, $event)"
+          @delete-row="estimate.deleteRow(element.id, $event)"
+          @duplicate-section="estimate.duplicateSection(element.id)"
+          @delete-section="estimate.deleteSection(element.id)"
+          @update-row-name="estimate.updateRowName(element.id, ...Object.values($event))"
+          @update-section-name="estimate.updateSectionName(element.id, $event)"
+          @update-dep="estimate.updateTaskValue(element.id, ...Object.values($event))"
+        ></table-section>
+      </template>
+    </draggable>
+  </div>
     <table-row :row="estimate.subtotal" :columns="columns"></table-row>
     <table-row class="estimate-table--row__discount" :row="estimate.discount" :columns="columns"></table-row>
     <table-row class="estimate-table--row__fees" :row="estimate.fees" :columns="columns"></table-row>
@@ -26,11 +30,14 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, PropType } from "vue";
+import { computed, defineComponent, defineProps, PropType } from "vue";
 import IEstimate from "estimate-library/build/types/IEstimate";
 import TableSection from "@/components/table/TableSection.vue";
 import TableRow from "@/components/table/TableRow.vue";
 import TableColumn from "@/components/table/models/table-column";
+import draggable from "vuedraggable";
+
+defineComponent(["draggable"]);
 
 const props = defineProps({
   estimate: { type: Object as PropType<IEstimate>, required: true },
@@ -52,4 +59,11 @@ const getIndex = (s: number) => {
 
   return count;
 };
+
+const sectionModel = computed({
+  get: () => props.estimate.sections,
+  set: (value) => {
+    console.log("value", value);
+  },
+});
 </script>
