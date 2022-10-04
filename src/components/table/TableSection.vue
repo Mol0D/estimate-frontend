@@ -21,6 +21,7 @@
     :row="task"
     :allow-delete="section.tasks.length > 1"
     :index="startIndex + t"
+    :columns="columns"
     @add-row="$emit('add-row')"
     @duplicate-row="$emit('duplicate-row', task.id)"
     @toggle-row="$emit('toggle-row', task.id)"
@@ -28,7 +29,7 @@
     @update-row-name="$emit('update-row-name', { taskId: task.id, $event })"
     @update-dep="$emit('update-dep', { taskId: task.id, ...$event })"
   ></table-row>
-  <table-row :row="section.total"></table-row>
+  <table-row :row="section.total" :columns="columns"></table-row>
 </template>
 
 <script setup lang="ts">
@@ -36,12 +37,14 @@ import { computed, defineEmits, defineProps, PropType } from "vue";
 import ISection from "estimate-library/build/types/ISection";
 import TableRow from "@/components/table/TableRow.vue";
 import TableSideMenu from "@/components/table/TableSideMenu.vue";
-import { TableAction } from "@/components/table/models/tabla-actions";
+import { TableAction } from "@/components/table/models/table-action";
+import TableColumn from "@/components/table/models/table-column";
 
 const props = defineProps({
   section: { type: Object as PropType<ISection>, required: true },
   allowDelete: { type: Boolean, required: true },
   startIndex: { type: Number, default: 1 },
+  columns: Object as PropType<Array<TableColumn>>,
 });
 
 const sectionActions = computed((): Array<TableAction> => {

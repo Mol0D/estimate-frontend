@@ -7,6 +7,7 @@
       :section="section"
       :allow-delete="estimate.sections.length > 1"
       :start-index="getIndex(s)"
+      :columns="columns"
       @add-section="estimate.addSection()"
       @add-row="estimate.addRow(section.id)"
       @duplicate-row="estimate.duplicateRow(section.id, $event)"
@@ -19,10 +20,10 @@
       @update-dep="estimate.updateTaskValue(section.id, ...Object.values($event))"
     ></table-section>
     <table-row :row="estimate.subtotal"></table-row>
-    <table-row class="estimate-table--row__discount" :row="estimate.discount"></table-row>
-    <table-row class="estimate-table--row__fees" :row="estimate.fees"></table-row>
-    <table-row class="estimate-table--row__taxes" :row="estimate.taxes"></table-row>
-    <table-row class="estimate-table--row__total" :row="estimate.total"></table-row>
+    <table-row class="estimate-table--row__discount" :row="estimate.discount" :columns="columns"></table-row>
+    <table-row class="estimate-table--row__fees" :row="estimate.fees" :columns="columns"></table-row>
+    <table-row class="estimate-table--row__taxes" :row="estimate.taxes" :columns="columns"></table-row>
+    <table-row class="estimate-table--row__total" :row="estimate.total" :columns="columns"></table-row>
   </tbody>
 </template>
 
@@ -31,9 +32,11 @@ import { defineProps, PropType } from "vue";
 import IEstimate from "estimate-library/build/types/IEstimate";
 import TableSection from "@/components/table/TableSection.vue";
 import TableRow from "@/components/table/TableRow.vue";
+import TableColumn from "@/components/table/models/table-column";
 
 const props = defineProps({
   estimate: { type: Object as PropType<IEstimate>, required: true },
+  columns: Object as PropType<Array<TableColumn>>,
 });
 
 // const debugHelper = (...obj) => {
