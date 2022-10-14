@@ -19,7 +19,7 @@
 import { computed, defineProps, PropType } from "vue";
 import { TableAction } from "@/components/table/models/table-action";
 import IRow from "estimate-library/build/types/IRow";
-import TableSideMenu from "@/components/table/TableSideMenu.vue";
+import TableSideMenu from "@/components/table/components/TableSideMenu.vue";
 
 const props = defineProps({
   showMenu: { type: Boolean, default: false },

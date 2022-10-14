@@ -11,6 +11,7 @@ $row-height: 48px;
 
   &--header {
     &__column {
+      position: relative;
       background: $primary-bg;
       display: flex;
       align-items: center;
@@ -103,6 +104,10 @@ $row-height: 48px;
       background-color: #96979b !important;
     }
 
+    &__draggable {
+      padding: 0 3px;
+    }
+
     &:last-child {
       border-right: none;
     }
@@ -122,6 +127,7 @@ $row-height: 48px;
 
   &--row {
     display: grid;
+    position: relative;
     height: $row-height;
     background: $primary-bg;
     border-bottom: $primary-border;
@@ -134,6 +140,7 @@ $row-height: 48px;
       position: relative;
       grid-template-columns: 1fr;
       border-bottom: $primary-border !important;
+      z-index: 3;
 
       .estimate-table--menu {
         &__list {
@@ -185,5 +192,16 @@ $row-height: 48px;
         color: #fbfcfe !important;
       }
     }
+  }
+
+  &--resize-button {
+    top: 0;
+    right: -3px;
+    width: 6px;
+    position: absolute;
+    cursor: col-resize;
+    user-select: none;
+    height: $row-height;
+    z-index: 2;
   }
 }

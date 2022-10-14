@@ -1,11 +1,12 @@
 import TableColumn from "@/components/table/models/table-column";
 import IDepartment from "estimate-library/build/types/IDepartment";
 import { TableCustomizedColumnsEnum } from "@/components/table/models/table-customized-columns-map";
+import { v4 as uuidv4 } from "uuid";
 
 const useInitialColumns = (
   departments: Array<IDepartment>
 ): Array<TableColumn> => {
-  const columns: Array<TableColumn> = [
+  const columns = [
     {
       title: "",
       resizable: false,
@@ -25,21 +26,21 @@ const useInitialColumns = (
       title: "Margin",
       value: "margin",
       resizable: true,
-      draggable: true,
+      draggable: false,
       width: 150,
     },
     {
       title: "Cost price",
       value: "costPrice",
       resizable: true,
-      draggable: true,
+      draggable: false,
       width: 150,
     },
     {
       title: "Price",
       value: "price",
       resizable: true,
-      draggable: true,
+      draggable: false,
       width: 150,
     },
   ];
@@ -60,7 +61,7 @@ const useInitialColumns = (
     }))
   );
 
-  return columns;
+  return columns.map((col) => ({ ...col, id: uuidv4() }));
 };
 
 export default useInitialColumns;

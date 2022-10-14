@@ -12,7 +12,7 @@
 <script setup lang="ts">
 import { computed, defineProps, PropType } from "vue";
 import IRow from "estimate-library/build/types/IRow";
-import TableCell from "@/components/table/TableCell.vue";
+import TableCell from "@/components/table/components/TableCell.vue";
 
 const props = defineProps({
   row: { type: Object as PropType<IRow>, required: true },

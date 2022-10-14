@@ -4,7 +4,11 @@
     :class="{ 'estimate-table--row-disable': row.isDisabled }"
     :style="tableStyles"
   >
-    <div class="estimate-table--column" v-for="(column, c) in columns" :key="c">
+    <div
+      class="estimate-table--column estimate-table--column__draggable"
+      v-for="(column, c) in columns"
+      :key="c"
+    >
       <component
         v-if="column.customizedType"
         :is="TableCustomizedColumnsMap.COMPONENTS[column.customizedType]"
@@ -42,7 +46,7 @@ const props = defineProps({
   columns: { type: Object as PropType<Array<TableColumn>>, required: true },
 });
 
-const { tableStyles } = useTableStyles(props.columns);
+const { tableStyles } = useTableStyles(props);
 
 defineEmits(["update-row-name", "duplicate-section"]);
 </script>

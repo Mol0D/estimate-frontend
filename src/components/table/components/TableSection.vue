@@ -51,8 +51,8 @@ import {
   PropType,
 } from "vue";
 import ISection from "estimate-library/build/types/ISection";
-import TableRow from "@/components/table/TableRow.vue";
-import TableSideMenu from "@/components/table/TableSideMenu.vue";
+import TableRow from "@/components/table/components/TableRow.vue";
+import TableSideMenu from "@/components/table/components/TableSideMenu.vue";
 import { TableAction } from "@/components/table/models/table-action";
 import TableColumn from "@/components/table/models/table-column";
 import draggable from "vuedraggable";

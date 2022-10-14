@@ -1,9 +1,14 @@
 import TableColumn from "@/components/table/models/table-column";
-import { computed } from "vue";
+import { computed, defineProps } from "vue";
 
-const useTableStyles = (columns: Array<TableColumn>) => {
+const useTableStyles = (props: any) => {
+  // const props = defineProps(["columns"]);
+
+  console.log(props, "hwewe");
+
   const tableStyles = computed(() => {
-    const widths = columns?.map((col: TableColumn) => `${col.width}px`) || [];
+    const widths =
+      props.columns?.map((col: TableColumn) => `${col.width}px`) || [];
 
     return {
       "grid-template-columns": widths.length ? widths.join(" ") : "none",

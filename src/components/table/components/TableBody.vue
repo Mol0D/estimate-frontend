@@ -2,7 +2,7 @@
   <!-- eslint-disable -->
   <div>
     <draggable v-model="sectionModel" item-key="id">
-      <template #item="{ element, index}">
+      <template #item="{ element, index }">
         <table-section
           :section="element"
           :allow-delete="estimate.sections.length > 1"
@@ -33,8 +33,8 @@
 <script setup lang="ts">
 import { computed, defineComponent, defineProps, PropType } from "vue";
 import IEstimate from "estimate-library/build/types/IEstimate";
-import TableSection from "@/components/table/TableSection.vue";
-import TableRow from "@/components/table/TableRow.vue";
+import TableSection from "@/components/table/components/TableSection.vue";
+import TableRow from "@/components/table/components/TableRow.vue";
 import TableColumn from "@/components/table/models/table-column";
 import draggable from "vuedraggable";
 import ISection from "estimate-library/build/types/ISection";
