@@ -17,6 +17,7 @@
         :show-menu="showMenu"
         :allow-delete="allowDelete"
         :index="index"
+        :percent="percent"
         :dep-id="column?.department?.id"
         @add-row="$emit('add-row')"
         @toggle-row="$emit('toggle-row')"
@@ -51,6 +52,7 @@ const props = defineProps({
   hideCostPrice: { type: Boolean, default: false },
   hideMargin: { type: Boolean, default: false },
   hidePrice: { type: Boolean, default: false },
+  percent: { type: Number, required: true },
 });
 
 const { tableStyles } = useTableStyles(props);
@@ -61,10 +63,6 @@ const isHideValue = (columnType: string) => {
   const isHidePrice = columnType === "price" && props.hidePrice;
 
   return isHideMargin || isHideCostPrice || isHidePrice;
-};
-
-const debug = (...arg: any) => {
-  console.log(arg);
 };
 
 defineEmits(["update-row-name", "duplicate-section"]);

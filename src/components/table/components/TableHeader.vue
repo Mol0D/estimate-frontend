@@ -90,7 +90,7 @@ const columnModel: WritableComputedRef<Array<TableColumn>> = computed({
 
 const resizeHandler = (index: number, width: number) => {
   const minWidth = columnModel.value[index].value === "name" ? 200 : 70;
-  const maxWidth = 300;
+  const maxWidth = columnModel.value[index].value === "name" ? 500 : 300;
   let newWidth: number;
 
   if (width < minWidth) {

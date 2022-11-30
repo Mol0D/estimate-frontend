@@ -25,9 +25,9 @@
   </div>
     <table-row hide-cost-price hide-margin hide-price :columns="columns" :row="getRateDepartmentsRow"></table-row>
     <table-row :row="estimate.subtotal" :columns="columns"></table-row>
-    <table-row hide-cost-price hide-margin class="estimate-table--row__discount" :row="estimate.discount" :columns="columns"></table-row>
-    <table-row hide-cost-price hide-margin class="estimate-table--row__fees" :row="estimate.fees" :columns="columns"></table-row>
-    <table-row hide-cost-price hide-margin class="estimate-table--row__taxes" :row="estimate.taxes" :columns="columns"></table-row>
+    <table-row hide-cost-price hide-margin class="estimate-table--row__discount" :row="estimate.discount" :columns="columns" :percent="estimate.config.discount"></table-row>
+    <table-row hide-cost-price hide-margin class="estimate-table--row__fees" :row="estimate.fees" :columns="columns" :percent="estimate.config.fees"></table-row>
+    <table-row hide-cost-price hide-margin class="estimate-table--row__taxes" :row="estimate.taxes" :columns="columns" :percent="estimate.config.taxes"></table-row>
     <table-row hide-cost-price hide-margin class="estimate-table--row__total" :row="estimate.total" :columns="columns"></table-row>
 </template>
 
