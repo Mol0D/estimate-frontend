@@ -23,11 +23,12 @@
       </template>
     </draggable>
   </div>
+    <table-row hide-cost-price hide-margin hide-price :columns="columns" :row="getRateDepartmentsRow"></table-row>
     <table-row :row="estimate.subtotal" :columns="columns"></table-row>
-    <table-row class="estimate-table--row__discount" :row="estimate.discount" :columns="columns"></table-row>
-    <table-row class="estimate-table--row__fees" :row="estimate.fees" :columns="columns"></table-row>
-    <table-row class="estimate-table--row__taxes" :row="estimate.taxes" :columns="columns"></table-row>
-    <table-row class="estimate-table--row__total" :row="estimate.total" :columns="columns"></table-row>
+    <table-row hide-cost-price hide-margin class="estimate-table--row__discount" :row="estimate.discount" :columns="columns"></table-row>
+    <table-row hide-cost-price hide-margin class="estimate-table--row__fees" :row="estimate.fees" :columns="columns"></table-row>
+    <table-row hide-cost-price hide-margin class="estimate-table--row__taxes" :row="estimate.taxes" :columns="columns"></table-row>
+    <table-row hide-cost-price hide-margin class="estimate-table--row__total" :row="estimate.total" :columns="columns"></table-row>
 </template>
 
 <script setup lang="ts">
@@ -38,6 +39,8 @@ import TableRow from "@/components/table/components/TableRow.vue";
 import TableColumn from "@/components/table/models/table-column";
 import draggable from "vuedraggable";
 import ISection from "estimate-library/build/types/ISection";
+import IRow from "estimate-library/build/types/IRow";
+import IDepartment from "estimate-library/build/types/IDepartment";
 
 defineComponent(["draggable"]);
 
@@ -67,5 +70,20 @@ const sectionModel = computed({
   set: (value: Array<ISection>) => {
     props.estimate.updateSectionsOrder(value);
   },
+});
+
+const getRateDepartmentsRow = computed((): IRow => {
+  return {
+    id: String(Date.now()),
+    name: "Rate per hour",
+    isDisabled: false,
+    departments: props.estimate.config.departments.map((dep: IDepartment) => ({
+      ...dep,
+      value: dep.rate,
+    })),
+    costPrice: 0,
+    margin: 0,
+    price: 0,
+  };
 });
 </script>

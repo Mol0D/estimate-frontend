@@ -8,6 +8,7 @@
       class="estimate-table--column estimate-table--column__draggable"
       v-for="(column, c) in columns"
       :key="c"
+      :class="{ 'hide-border-right': isHideValue(column.value) }"
     >
       <component
         v-if="column.customizedType"
@@ -26,7 +27,10 @@
           $emit('update-dep', { depId: column?.department?.id, value: $event })
         "
       ></component>
-      <span v-else>{{ row[column.value] }}</span>
+      <template v-else>
+        <span v-if="isHideValue(column.value)"></span>
+        <span v-else>{{ row[column.value] }}</span>
+      </template>
     </div>
   </div>
 </template>
@@ -44,9 +48,20 @@ const props = defineProps({
   allowDelete: { type: Boolean, default: false },
   index: { type: Number, default: 0 },
   columns: { type: Object as PropType<Array<TableColumn>>, required: true },
+  hideCostPrice: { type: Boolean, default: false },
+  hideMargin: { type: Boolean, default: false },
+  hidePrice: { type: Boolean, default: false },
 });
 
 const { tableStyles } = useTableStyles(props);
+
+const isHideValue = (columnType: string) => {
+  const isHideMargin = columnType === "margin" && props.hideMargin;
+  const isHideCostPrice = columnType === "costPrice" && props.hideCostPrice;
+  const isHidePrice = columnType === "price" && props.hidePrice;
+
+  return isHideMargin || isHideCostPrice || isHidePrice;
+};
 
 defineEmits(["update-row-name", "duplicate-section"]);
 </script>

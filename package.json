@@ -10,7 +10,7 @@
   "dependencies": {
     "click-outside-vue3": "^4.0.1",
     "core-js": "^3.8.3",
-    "estimate-library": "^0.2.13",
+    "estimate-library": "^0.2.14",
     "uuid": "^9.0.0",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3",

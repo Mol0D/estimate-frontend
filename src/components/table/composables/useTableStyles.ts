@@ -4,8 +4,6 @@ import { computed, defineProps } from "vue";
 const useTableStyles = (props: any) => {
   // const props = defineProps(["columns"]);
 
-  console.log(props, "hwewe");
-
   const tableStyles = computed(() => {
     const widths =
       props.columns?.map((col: TableColumn) => `${col.width}px`) || [];

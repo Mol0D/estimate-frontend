@@ -15,13 +15,13 @@
 <script setup lang="ts">
 import Table from "estimate-library";
 // import Table from "../../../../estimate-table-lib/build/index.js";
-import { defineExpose, onMounted, ref, nextTick, computed } from "vue";
+import { defineExpose, onMounted, ref, computed } from "vue";
 import mockDepartments from "@/helpers/mock-departments";
 import TableHeader from "@/components/table/components/TableHeader.vue";
 import TableBody from "@/components/table/components/TableBody.vue";
 import useInitialColumns from "@/components/table/composables/useInitialColumns";
 import TableColumn from "@/components/table/models/table-column";
-import useTableResizeColumns from "@/components/table/composables/useTableResizeColumns";
+// import useTableResizeColumns from "@/components/table/composables/useTableResizeColumns";
 
 const estimateTable = ref();
 const tableColumns = ref<Array<TableColumn>>([]);
