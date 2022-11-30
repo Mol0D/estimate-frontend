@@ -127,6 +127,17 @@ $row-height: 48px;
     &-disable {
       background-color: #96979b !important;
     }
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    /* Firefox */
+    &[type=number] {
+      -moz-appearance: textfield;
+    }
   }
 
   &--row {

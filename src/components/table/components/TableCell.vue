@@ -1,17 +1,26 @@
 <template>
   <input
     class="estimate-table--input"
-    :value="props.value"
-    @input="$emit('input', +$event.target.value)"
+    type="number"
+    v-model.number="modelValue"
   />
 </template>
 
 <script setup lang="ts">
-import { defineEmits, defineProps } from "vue";
+import { computed, defineEmits, defineProps } from "vue";
 
 const props = defineProps({
   value: { type: Number, required: true },
 });
 
-defineEmits(["input"]);
+const modelValue = computed({
+  get() {
+    return props.value.toString();
+  },
+  set(value) {
+    emits("input", value);
+  },
+});
+
+const emits = defineEmits(["input"]);
 </script>

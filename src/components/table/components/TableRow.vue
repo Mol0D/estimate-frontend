@@ -22,7 +22,7 @@
         @toggle-row="$emit('toggle-row')"
         @duplicate-row="$emit('duplicate-row')"
         @delete-row="$emit('delete-row')"
-        @update-row-name="$emit('update-row-name', $event.target.value)"
+        @update-row-name="$emit('update-row-name', $event)"
         @update-dep="
           $emit('update-dep', { depId: column?.department?.id, value: $event })
         "
@@ -61,6 +61,10 @@ const isHideValue = (columnType: string) => {
   const isHidePrice = columnType === "price" && props.hidePrice;
 
   return isHideMargin || isHideCostPrice || isHidePrice;
+};
+
+const debug = (...arg: any) => {
+  console.log(arg);
 };
 
 defineEmits(["update-row-name", "duplicate-section"]);
