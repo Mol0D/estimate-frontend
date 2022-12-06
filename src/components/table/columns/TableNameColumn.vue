@@ -15,7 +15,7 @@ import IRow from "estimate-library/build/types/IRow";
 const props = defineProps({
   row: { type: Object as PropType<IRow>, required: true },
   showMenu: { type: Boolean, default: false },
-  percent: { type: Number, required: true },
+  percent: { type: String, required: true },
 });
 
 const getName = computed(

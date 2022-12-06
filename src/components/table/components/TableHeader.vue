@@ -21,7 +21,11 @@
         }"
         :style="{ width: `${header.width}px` }"
       >
-        <span>{{ header.title }}</span>
+        <span>{{
+          `${header.title} ${
+            header.value === "margin" ? `(${config.margin}%)` : ""
+          }`
+        }}</span>
         <table-side-menu
           v-if="header.department?.id"
           :list="getDepartmentMenu(header.isDisabled)"

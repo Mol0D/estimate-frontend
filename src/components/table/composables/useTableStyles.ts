@@ -1,5 +1,5 @@
 import TableColumn from "@/components/table/models/table-column";
-import { computed, defineProps } from "vue";
+import { computed } from "vue";
 
 const useTableStyles = (props: any) => {
   // const props = defineProps(["columns"]);

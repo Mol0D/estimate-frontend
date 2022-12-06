@@ -52,7 +52,7 @@ const props = defineProps({
   hideCostPrice: { type: Boolean, default: false },
   hideMargin: { type: Boolean, default: false },
   hidePrice: { type: Boolean, default: false },
-  percent: { type: Number, required: true },
+  percent: { type: String, required: true },
 });
 
 const { tableStyles } = useTableStyles(props);
