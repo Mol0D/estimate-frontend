@@ -1,10 +1,8 @@
 <template>
-  <div>
-    <estimate-form :estimate="estimate"></estimate-form>
+  <div class="h-full flex flex-col justify-evenly mx-[100px]">
+    <!--    <estimate-form :estimate="estimate"></estimate-form>-->
 
-    <div style="padding-top: 200px">
-      <estimate-table-component :estimate="estimate"></estimate-table-component>
-    </div>
+    <estimate-table-component :estimate="estimate"></estimate-table-component>
   </div>
 </template>
 

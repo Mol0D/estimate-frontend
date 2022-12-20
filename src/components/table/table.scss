@@ -210,5 +210,9 @@ $row-height: 48px;
     user-select: none;
     height: $row-height;
     z-index: 2;
+
+    &:last-child {
+      right: 0;
+    }
   }
 }

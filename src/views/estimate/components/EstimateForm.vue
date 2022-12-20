@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col">
-    <div class="grid grid-cols-3 gap-4">
+    <div class="grid grid-cols-4 gap-4">
       <div class="flex flex-col items-start">
         <span class="pl-3">Margin, %</span>
         <input
